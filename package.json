@@ -12,6 +12,10 @@
     "astro": "astro"
   },
   "dependencies": {
-    "astro": "^7.1.3"
+    "astro": "^7.1.3",
+    "astro-icon": "^1.1.5"
+  },
+  "devDependencies": {
+    "scss": "^0.2.4"
   }
 }
