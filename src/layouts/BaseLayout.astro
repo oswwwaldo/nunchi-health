@@ -1,7 +1,6 @@
 ---
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
-import AppIcon from '../components/AppIcon.astro';
+import SiteHeader from '../components/global/SiteHeader.astro';
+import SiteFooter from '../components/global/SiteFooter.astro';
 
 import '../styles/global.scss';
 
@@ -21,21 +20,8 @@ const { pageTitle } = Astro.props;
     <link rel="manifest" href="/site.webmanifest" />
   </head>
   <body>
-    <Header />
-
-
-    <!-- <h1>{pageTitle}</h1>
-
-    <header>
-    <AppIcon name="fa6-solid:heart" class="text-red-500" size={20} />
-    
-    <!-- Using a local SVG from src/icons/logo.svg -->
-    <!-- <AppIcon name="logo" size={32} aria-label="Nunchi Health Logo" /> 
-    </header> -->
-    <!-- <slot /> -->
-    <!-- <Footer /> -->
-    <script>
-    //   import "../scripts/menu.js";
-    </script>
+    <SiteHeader />
+    <slot />
+    <!-- <SiteFooter /> -->
   </body>
 </html>

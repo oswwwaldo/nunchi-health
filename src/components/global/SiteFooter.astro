@@ -1,5 +1,5 @@
 ---
-import AppIcon from '../components/AppIcon.astro';
+import AppIcon from '../ui/AppIcon.astro';
 ---
 
 <footer class="footer">
@@ -32,7 +32,7 @@ import AppIcon from '../components/AppIcon.astro';
 
         <!-- Independent Block: search-bar -->
         <div class="search-bar">
-            <input class="search-bar__input" type="text" value placeholder = "Search" aria-label="Search site">
+            <input class="search-bar__input" type="text" placeholder = "Search" aria-label="Search site">
         </div>
         
         <!-- Independent Block: socials -->
@@ -79,7 +79,7 @@ import AppIcon from '../components/AppIcon.astro';
 </footer>
 
 <style lang="scss">
-    @use '../styles/variables.scss' as *;
+    @use '../../styles/variables.scss' as *;
 
     /* =========================================
        Block: Footer
