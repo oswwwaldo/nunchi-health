@@ -1,0 +1,221 @@
+---
+import AppIcon from '../components/AppIcon.astro';
+---
+
+<footer class="footer">
+    <div class="footer__logo">
+        <img src="/logo.svg" alt="Nunchi Health Logo" />
+    </div>
+    
+    <nav class="footer__nav">
+        <!-- Independent Block: list-group -->
+        <div class="list-group">
+            <!-- Independent Block: link-list -->
+            <div class="link-list">
+                <h4 class="link-list__header"> About Us </h4>
+                <ul class="link-list__list">
+                    <li class="link-list__item"> <a class="link-list__link" href="#">Our Mission</a> </li>
+                    <li class="link-list__item"> <a class="link-list__link" href="#">Our Team</a> </li>
+                    <li class="link-list__item"> <a class="link-list__link" href="#">Contact Us</a> </li>
+                </ul>
+            </div>
+            
+            <div class="link-list"> 
+                <h4 class="link-list__header"> Explore </h4>
+                <ul class="link-list__list">
+                    <li class="link-list__item"> <a class="link-list__link" href="#">Our Programs</a> </li>
+                    <li class="link-list__item"> <a class="link-list__link" href="#">Merch with a Mission</a> </li>
+                    <li class="link-list__item"> <a class="link-list__link" href="#">Donate</a> </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Independent Block: search-bar -->
+        <div class="search-bar">
+            <input class="search-bar__input" type="text" value placeholder = "Search" aria-label="Search site">
+        </div>
+        
+        <!-- Independent Block: socials -->
+        <div class="socials">
+            <button class="socials__btn" aria-label="LinkedIn">
+                <AppIcon name="fa6-brands:linkedin-in"></AppIcon>
+            </button>
+            <button class="socials__btn" aria-label="Instagram">
+                <AppIcon name="fa6-brands:instagram"></AppIcon>
+            </button>
+            <button class="socials__btn" aria-label="YouTube">
+                <AppIcon name="fa6-brands:youtube"></AppIcon>
+            </button>
+            <button class="socials__btn" aria-label="TikTok">
+                <AppIcon name="fa6-brands:tiktok"></AppIcon>
+            </button>
+            <button class="socials__btn" aria-label="Email">
+                <AppIcon name="fa6-solid:envelope"></AppIcon>
+            </button>
+        </div>
+        
+        <p class="footer__description"> 
+            Nunchi Health is a 501(c)(3) nonprofit (EIN 93-4186101) making youth mental health free, accessible, and identity-affirming through community-led programs worldwide.
+        </p> 
+        <p class="footer__copyright"> Copyright © 2026 Nunchi Health - All Rights Reserved. </p>
+    </nav>
+    
+    <div class="footer__subscribe">
+        <h2 class="footer__heading"> You belong here </h2>
+        <p class="footer__text"> 
+            Join the Nunchi Health mailing list to stay connected with our community, get updates on programs and events, and discover ways to support mental health and advocacy.
+        </p>
+        
+        <!-- Independent Block: mailing-list -->
+        <div class="mailing-list">
+            <input class="mailing-list__input" type="email" aria-label="Email address">
+            <button class="mailing-list__button"> Subscribe </button>
+        </div>
+
+        <div class="certificate-blurb">
+            <img class="footer__certificate-img" src="" alt="Certificate Badge" />
+        </div>
+    </div>    
+</footer>
+
+<style lang="scss">
+    @use '../styles/variables.scss' as *;
+
+    /* =========================================
+       Block: Footer
+       ========================================= */
+    .footer {
+        display:     grid;
+        height: 80vh;
+        background-color: $color--tan;
+
+
+        grid-auto-flow: column;
+        align-content: start;
+        justify-content: center;
+        align-items: start;
+
+        > * {
+            height: 100%;
+        }
+
+        &__logo {
+            img {
+                // Logo styles
+            }
+        }
+
+        &__nav {
+            display: flex;
+            flex-direction: column;
+            // Navigation section styles
+        }
+
+        &__description {
+            // Paragraph styles
+        }
+
+        &__copyright {
+            // Copyright text styles
+        }
+
+        &__subscribe {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        &__heading {
+            // 'You belong here' header
+        }
+        
+        &__text {
+            // Subscription text styles
+        }
+        
+        &__certificate {
+            // Certificate blurb layout
+        }
+    }
+
+    /* =========================================
+       Block: List Group
+       ========================================= */
+    .list-group {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    /* =========================================
+       Block: Link List
+       ========================================= */
+    .link-list {
+        &__header {
+            font-size: 19.0653px;  
+            font-weight: 600;
+            margin: 0 0 32px 0;
+        }
+
+        &__list {
+            list-style: none;
+            padding: 0;
+            margin: 16px 0 0;
+
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        &__item {
+            color: $color--black;
+            text-decoration: underline;
+        }
+
+        &__link {
+            text-decoration: none;
+            // a styles (color, hover states, etc.)
+        }
+    }
+
+    /* =========================================
+       Block: Search Bar
+       ========================================= */
+    .search-bar {
+        &__input {
+            display: block;
+            box-sizing: border-box;
+            width: 100%;
+            min-height: 20px;
+            padding: 12px 12px 12px 45px;
+            border: 1px solid $color--gray;
+
+            opacity: 0.7;
+            background: no-repeat 15px 50%;
+            // background-image: 
+
+        }
+    }
+
+    /* =========================================
+       Block: Socials
+       ========================================= */
+    .socials {
+        &__btn {
+            // button styles (background, border, padding)
+            background: none;
+            border: none;
+        }
+    }
+
+    /* =========================================
+       Block: Mailing List
+       ========================================= */
+    .mailing-list {
+        &__input {
+            // email input styles
+        }
+
+        &__button {
+            // submit button styles
+        }
+    }
+</style>    

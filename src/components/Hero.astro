@@ -1,0 +1,232 @@
+---
+---
+
+<div id="nunchi-hero-wrapper">
+  <section class="hero">
+    <section class="hero__text">
+      <h4 id="belonging-script-text">We belong here</h4>
+      <h1>We are making mental health support accessible for young people worldwide.</h1>
+      <p>Nunchi Health is the world's first and only nonprofit reimagining youth mental health through culturally grounded, identity-affirming and peer-led programs built for immigrants and minorities alike.</p>
+      <p>Sign up for our newsletter to stay in touch.</p> -->
+
+      <div class="hero__actions">
+        <button class="btn-donate">Donate</button>
+        
+        <div class="email-signup-group">
+          <input type="email" placeholder="Enter your email" aria-label="Email address">
+          <button type="button">Sign me up</button>
+        </div>
+      </div> 
+     
+    </section>
+  </section>
+</div>
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Caveat:wght@500&display=swap');
+
+  :root {
+    --nunchi-vanilla: #EEE7DB;
+  }
+
+  #nunchi-hero-wrapper {
+    position: relative;
+    width: 100%;
+    background-image: url('https://images.squarespace-cdn.com/content/v1/65a5e25dfd3e85633a48718b/c97982b6-bdd9-47db-bdb5-12f3efa3696f/unsplash-image-zgdhwK1UT3U.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+  #nunchi-hero-wrapper::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.65);
+    z-index: 1;
+  }
+
+  .hero {
+    position: relative; 
+    z-index: 2; 
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 4vw;
+    font-family: 'Poppins', sans-serif;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .hero__text {
+    display: flex;
+    flex-flow: row wrap;
+    gap: 20px;
+    align-items: flex-start;
+    min-width: 70%;
+    max-width: 80%;
+  }
+
+  #belonging-script-text {
+    position: absolute;
+    bottom: 4vw;
+    right: 4vw;
+    margin: 0;
+    font-family: 'Caveat', cursive;
+    font-size: 2.5rem; 
+    font-weight: 500;
+    color: var(--nunchi-vanilla);
+    line-height: 1.2em;
+    letter-spacing: 0.02em;
+    transform: rotate(-4deg); 
+  }
+
+  .hero__text h1 {
+    width: 100%;
+    font-size: 4rem;
+    font-weight: 500;
+    line-height: 80px;
+    margin: 0 0 10px 0;
+    color: var(--nunchi-vanilla);
+    letter-spacing: -0.02em;
+  }
+
+  .hero__text p {
+    width: 100%;
+    font-size: 1rem;
+    font-weight: 300;
+    line-height: 1.8em;
+    margin: 0 0 10px 0;
+    color: var(--nunchi-vanilla);
+  }
+
+  .hero__actions {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    width: 100%;
+    flex-wrap: wrap;
+  }
+
+  /* Base styles extracted from Squarespace button dump */
+  .btn-donate, 
+  .email-signup-group button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    text-align: center;
+    text-decoration: none;
+    -webkit-font-smoothing: antialiased;
+    -webkit-backface-visibility: hidden;
+    
+    font-family: 'Poppins', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 1rem;
+    letter-spacing: 0.02em;
+    text-transform: none;
+    line-height: normal;
+    
+    /* New Button Colors */
+    background-color: #C7DA97;
+    color: #000000;
+    border: 0px solid #000000;
+    
+    cursor: pointer;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+  }
+
+  /* Specific paddings and radii kept strictly as requested */
+  .btn-donate {
+    padding: 1.5rem 2.2rem;
+    border-radius: 15px;
+  }
+
+  .email-signup-group button {
+    padding: 1.1rem 1.8rem;
+    border-radius: 10px; 
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  .btn-donate:hover,
+  .email-signup-group button:hover {
+    opacity: 0.8;
+    transform: translateY(-2px);
+  }
+
+  .email-signup-group {
+    display: flex;
+    align-items: center;
+    background-color: #ffffff;
+    border: 1px solid #d2d6dc;
+    border-radius: 15px;
+    padding: 6px; 
+    transition: border-color 0.2s;
+  }
+
+  .email-signup-group:focus-within {
+    border-color: #1a1a1a;
+  }
+
+  .email-signup-group input {
+    flex-grow: 1;
+    border: none;
+    outline: none;
+    background: transparent;
+    padding: 0 15px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1rem;
+    color: #1a1a1a;
+    min-width: 240px;
+  }
+
+  .email-signup-group input::placeholder {
+    color: #718096;
+    font-weight: 300;
+  }
+
+  /* Hide the handwritten text on smaller screens */
+  @media (max-width: 900px) {
+    #belonging-script-text {
+      display: none;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .hero {
+      flex-direction: column;
+      padding: 5vw;
+      gap: 30px;
+    }
+    
+    .hero__text {
+      width: 100%;
+    }
+
+    .hero__text h1 {
+      font-size: 2.5rem;
+      line-height: 1.2em;
+    }
+
+    .hero__actions {
+      flex-direction: column;
+      align-items: stretch;
+    }
+
+    .email-signup-group {
+      width: 100%;
+      box-sizing: border-box;
+      justify-content: space-between;
+    }
+    
+    .email-signup-group input {
+      width: 100%;
+      min-width: 0;
+    }
+  }
+</style>
