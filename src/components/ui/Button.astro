@@ -7,12 +7,12 @@ interface Props {
 const { textContent = "Learn more", link = "#" } = Astro.props;
 ---
 
-<a class="button" href="{link}">
-    {textContent}
+<a class="button" href={link}>
+    {textContent}   
 </a>
 
 <style lang="scss">
-  @use '../styles/variables.scss' as *;
+  @use '../../styles/variables.scss' as *;
 
     .button {
         display: inline-block;
@@ -23,7 +23,7 @@ const { textContent = "Learn more", link = "#" } = Astro.props;
         pointer-events: auto;
         padding: 24px 35px;
 
-        font-weight: 500;
+        font-weight: 500;   
         font-size: 15px;
         text-align: center;
         text-size-adjust: 100%;

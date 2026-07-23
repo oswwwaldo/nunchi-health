@@ -1,0 +1,101 @@
+---
+import { Image } from 'astro:assets';
+import nunchiHealthLogo from '../../assets/nunchi-logo.svg';
+import NavDropdown from '../ui/NavDropdown.astro';
+import Button from '../ui/Button.astro';
+
+interface Link {
+  title: string;
+  slug: string;
+}
+
+type DropdownLinks = Record<string, Link[]>;
+
+const headerLinks: DropdownLinks = {
+  "About": [
+    { title: "Our Mission", slug: "our-mission" },
+    { title: "Our Team", slug: "our-team" },
+    { title: "Contact Us", slug: "contact" },
+  ],
+  "Our Programs": [
+    { title: "Campus Chapters", slug: "campus-chapters" },
+    { title: "Conference", slug: "conference" },
+    { title: "Fellowship", slug: "fellowship" },
+    { title: "Workshops", slug: "workshops" },
+  ],
+  "Get Involved": [
+    { title: "Refer A Student", slug: "refer" },
+    { title: "Volunteer With Us", slug: "volunteer" },
+    { title: "Careers", slug: "careers" },
+    { title: "Support Nunchi", slug: "support-nunchi" },
+    { title: "Partner with Nunchi", slug: "partner" },
+  ],
+};
+---
+
+<header class="header">
+  <div class="header__group">
+    <div class="header__logo">
+      <a href="/">
+        <Image 
+        src={nunchiHealthLogo} 
+        alt="Nunchi Health Logo" 
+        loading="eager" 
+        width={170.56}
+        height={55.99}
+        />
+      </a>
+    </div>
+        
+    <nav class="header__links">
+      {Object.entries(headerLinks).map(([category, links]) => (
+        <NavDropdown label={category} links={links} />
+      ))}
+      <a class="header__direct-link" href="/shop">Shop</a>
+    </nav>
+  </div>
+  <div class="header__button">
+    <Button textContent="Support Nunchi", link="support-nunchi"></Button>
+  </div>
+</header>
+
+<style lang="scss">
+    @use '../../styles/variables.scss' as *;
+    
+    .header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 2vw 3vw;
+        pointer-events: auto;
+
+
+        background-color: $color--tan;
+        transition: transform 140ms ease-in-out;
+
+        box-shadow: 0px 12px 12px 0px rgba(0, 0, 0, 0.15);
+        position: relative;
+        z-index: 50;
+
+        &__group {
+          display: flex;
+          align-items: center;
+          flex: auto;
+          justify-content: space-between;
+
+          &__logo {}
+          &__links {
+            display: flex;
+            flex-direction: row;
+          }
+        }
+
+        &__button {
+          margin-left: 8rem;
+        }
+
+        &__direct-link {
+          margin-left: 3rem;
+        }
+    }   
+</style>

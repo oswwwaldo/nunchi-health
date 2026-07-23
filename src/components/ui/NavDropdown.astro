@@ -1,0 +1,120 @@
+---
+import AppIcon from '../ui/AppIcon.astro';
+import ArrowDown from './ArrowDown.astro';
+
+interface Link {
+  title: string;
+  slug: string;
+}
+
+interface Props {
+  label: string;
+  links: Link[];
+}
+
+const { label, links } = Astro.props;
+---
+
+<div class="nav-dropdown">
+  <button class="dropdown">
+    <span class="dropdown__label"> {label} </span>
+    <span class="dropdown__icon"> <ArrowDown /> </span>
+  </button>
+
+  <ul class="nav-dropdown__menu">
+    {links.map((link) => (
+      <li class="nav-dropdown__item">
+        <a class="nav-dropdown__link" href={`/${link.slug}`}>
+          {link.title}
+        </a>
+      </li>
+    ))}
+  </ul>
+</div>
+<style lang="scss">
+    @use '../../styles/variables.scss' as *;
+
+    .nav-dropdown {
+      display: inline-block;
+      position: relative;
+
+        .dropdown {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+                
+            font-kerning: auto;
+            font-weight: 300;
+            font-size: 1rem;
+            line-height: 28.8px;
+            text-align: right;
+            text-wrap-mode: nowrap;
+            white-space-collapse: collapse;
+
+            background: none;
+            border: none;
+
+            cursor: pointer;
+            overflow-wrap: break-word;
+            pointer-events: auto;
+
+
+            &__label {
+              margin-left: 32px; 
+            }
+
+            &__icon {
+                display: flex;
+                align-items: center;
+            }
+        }
+
+        &__menu {
+            display: none;
+            flex-direction: column;
+            min-width: 200px;
+            top: 100%;
+            right: 0;
+            z-index: 10;
+            position: absolute;
+            text-align: right;
+
+            padding: 1rem 0.8rem;
+
+            background-color: $color--tan;
+
+        }
+        &__item {}
+        &__link {
+            color: black;
+            text-decoration: none;
+            
+        }
+    }
+
+    .nav-dropdown__trigger {
+        display: flex;
+        align-items: center;
+        gap: 0.35em; /* Spacing between text and arrow */
+        background: none;
+        border: none;
+        cursor: pointer;
+        font-family: inherit;
+        font-size: inherit;
+        color: inherit;
+    }
+
+    .nav-dropdown__icon {
+        transition: transform 0.2s ease;
+    }
+
+    .nav-dropdown.is-active .dropdown__icon,
+    .nav-dropdown:hover .dropdown__icon {
+        transform: rotate(180deg);
+    }   
+
+    .nav-dropdown:hover .nav-dropdown__menu {
+        display: flex !important;
+    }
+
+</style>
