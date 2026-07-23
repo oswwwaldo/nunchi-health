@@ -1,10 +1,14 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import AboveTheFoldCard from '../components/sections/AboveTheFoldCard.astro';
 
 const pageTitle = "Conference";
+
+const cardTitle = "Nunchi Conference Spring 2026";
+const cardParagraph = "The Nunchi Conference is a virtual mental health conference catered towards communities of immigrant origin. In the past, our Conference has featured mental health advocacy workshops, professional mentorship, and our signature Nunchi Lightning Talks event. This conference is open to all high school students, university students, and young professionals interested in mental health."
+// const cardImage = '../assets/media/edited-full-staff.webp'
+
 ---
-
-
 <BaseLayout pageTitle={pageTitle}>
-    <h1> Nunchi Health Conference. </h1>
+    <AboveTheFoldCard cardTitle={cardTitle}, cardParagraph={cardParagraph} />
 </BaseLayout>

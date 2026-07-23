@@ -1,0 +1,25 @@
+---
+import { Image } from 'astro:assets';
+
+
+interface Props {
+    cardTitle: string;
+    cardParagraph: string;
+    cardImage?: string;
+}
+const {cardTitle, cardParagraph, cardImage = ""} = Astro.props;
+---
+
+<section class="card">
+    <h1 class="card__header">{cardTitle}</h1>
+    <p class="card__paragraph">{cardParagraph}</p>
+    <!-- 
+    <Image 
+        src='.'
+        alt="Nunchi Health Logo" 
+        loading="eager" 
+        width={170.56}
+        height={55.99}
+    /> 
+    -->
+</section>

@@ -1,8 +1,26 @@
 ---
-// src/pages/typography.astro
 import BaseLayout from '../layouts/BaseLayout.astro';
 
 const pageTitle = "Nunchi Health";
+
+const pages = [
+  { title: "Core", slug: "/", completed: true },
+  { title: "Home", slug: "/", completed: false },
+  { title: "Blog", slug: "/blog", completed: false },
+  { title: "Shop", slug: "/shop", completed: false },
+  { title: "Our Team", slug: "/our-team", completed: false },
+  { title: "Our Mission", slug: "/our-mission", completed: false },
+  { title: "Contact", slug: "/contact-us", completed: false },
+  { title: "Campus Chapters", slug: "/campus-chapters", completed: false },
+  { title: "Conference", slug: "/conference", completed: false },
+  { title: "Fellowship", slug: "/fellowship", completed: false },
+  { title: "Workshops", slug: "/workshops", completed: false },
+  { title: "Refer A Student", slug: "/refer", completed: false },
+  { title: "Volunteer with Us", slug: "/volunteer", completed: false },
+  { title: "Careers", slug: "/careers", completed: false },
+  { title: "Support Us", slug: "/donate", completed: false },
+  { title: "Partner with Us", slug: "/partner", completed: false },
+];
 ---
 
 <BaseLayout pageTitle={pageTitle}>
@@ -11,9 +29,43 @@ const pageTitle = "Nunchi Health";
         <p> Started July 21st, 2026 </p>
         <p>The pages that lie ahead—Our Mission, Our Team, Contact Us, Campus Chapters, Conference, 
             Fellowship, Workshops, Refer A Student, Careers, Support Nunchi, Partner with Nunchi, 
-            Volunteer With Us—plus blog pages, store page. The priority is accessiblity, performance, 
+            Volunteer With Us—plus blog pages, store page. The priority is accessibility, performance, 
             responsiveness and becoming ad-grant compliant. </p>
         <p>Astro.js, React.js, Cloudflare Pages & Workers + Stripe Checkout & Payload CMS </p>
+
+        <div class="progress-section">
+            <div class="progress-header">
+                <span id="progress-text">Calculating progress...</span>
+            </div>
+            <div class="progress-track">
+                <div class="progress-fill" id="progress-bar"></div>
+            </div>
+        </div>
+
+        <div class="dropdown-wrapper" id="dropdown-wrapper">
+            <details class="dev-dropdown" id="dev-dropdown">
+                <summary class="dev-dropdown__title">
+                    <h4>Development Progress <span class="arrow">▼</span></h4>
+                </summary>
+                
+                <div class="dev-dropdown__content">
+                    <ul class="checklist">
+                        {pages.map((page, index) => (
+                            <li>
+                                <label>
+                                    <input 
+                                        type="checkbox" 
+                                        checked={page.completed} 
+                                        data-index={index} 
+                                    />
+                                    {page.title}
+                                </label>
+                            </li>
+                        ))}
+                    </ul>
+                </div>
+            </details>
+        </div>
     </section>
 </BaseLayout>
 
@@ -22,6 +74,169 @@ const pageTitle = "Nunchi Health";
         background: #6D83E1;
         color: white;
         padding: 4vw;
+        font-family: sans-serif;
+    }
 
+    h2 {
+        font-size: 2.5rem;
+        margin-bottom: 0.5rem;
+    }
+
+    p {
+        line-height: 1.6;
+        margin-bottom: 1rem;
+        max-width: 800px;
+    }
+
+    .progress-section {
+        margin: 3rem 0;
+        max-width: 400px;
+    }
+
+    .progress-header {
+        margin-bottom: 0.75rem;
+        font-weight: 600;
+        font-size: 1.1rem;
+    }
+
+    .progress-track {
+        width: 100%;
+        height: 20px;
+        background: rgba(255, 255, 255, 0.2);
+        border-radius: 10px;
+        overflow: hidden;
+        border: 1px solid rgba(255, 255, 255, 0.4);
+    }
+
+    .progress-fill {
+        height: 100%;
+        width: 0%;
+        background-color: #A3E635; /* Bright contrast color */
+        transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .dropdown-wrapper {
+        position: relative;
+        display: inline-block;
+    }
+
+    .dev-dropdown {
+        &__title {
+            list-style: none; 
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.15);
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            transition: background 0.2s ease;
+
+            &::-webkit-details-marker {
+                display: none; 
+            }
+
+            h3 {
+                margin: 0;
+                font-size: 1.25rem;
+                display: flex;
+                align-items: center;
+                gap: 0.5rem;
+            }
+
+            .arrow {
+                font-size: 0.9rem;
+                transition: transform 0.3s ease;
+            }
+
+            &:hover, &:focus-visible {
+                background: rgba(255, 255, 255, 0.25);
+            }
+        }
+
+        &[open] .arrow {
+            transform: rotate(180deg);
+        }
+
+        &__content {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            margin-top: 0.5rem;
+            background: white;
+            color: #1a1a1a;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            min-width: 280px;
+            z-index: 50;
+
+            .checklist {
+                list-style: none;
+                padding: 0;
+                margin: 0;
+                display: flex;
+                flex-direction: column;
+                gap: 0.75rem;
+
+                li { margin: 0; }
+
+                label {
+                    display: flex;
+                    align-items: center;
+                    gap: 0.75rem;
+                    cursor: pointer;
+                    font-size: 1rem;
+                    font-weight: 500;
+                    user-select: none;
+
+                    input[type="checkbox"] {
+                        width: 18px;
+                        height: 18px;
+                        cursor: pointer;
+                        accent-color: #6D83E1; 
+                    }
+                }
+            }
+        }
     }
 </style>
+
+<script>
+    function initializeTracker() {
+        const checkboxes = document.querySelectorAll('.checklist input[type="checkbox"]');
+        const progressBar = document.getElementById('progress-bar');
+        const progressText = document.getElementById('progress-text');
+
+        function updateProgress() {
+            if (!checkboxes.length || !progressBar || !progressText) return;
+
+            const total = checkboxes.length;
+            let checkedCount = 0;
+            
+            checkboxes.forEach((cb) => {
+                if ((cb as HTMLInputElement).checked) checkedCount++;
+            });
+
+            const percentage = (checkedCount / total) * 100;
+            progressBar.style.width = `${percentage}%`;
+            progressText.textContent = `${checkedCount} / ${total} Pages Completed`;
+        }
+
+        updateProgress();
+
+        checkboxes.forEach((cb) => {
+            cb.addEventListener('change', updateProgress);
+        });
+
+        const wrapper = document.getElementById('dropdown-wrapper');
+        const details = document.getElementById('dev-dropdown');
+        
+        if (wrapper && details) {
+            wrapper.addEventListener('mouseenter', () => details.setAttribute('open', ''));
+            wrapper.addEventListener('mouseleave', () => details.removeAttribute('open'));
+        }
+    }
+
+    document.addEventListener('DOMContentLoaded', initializeTracker);
+</script>
