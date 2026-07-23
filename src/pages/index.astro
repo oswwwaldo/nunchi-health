@@ -1,10 +1,27 @@
 ---
+// src/pages/typography.astro
 import BaseLayout from '../layouts/BaseLayout.astro';
 
 const pageTitle = "Nunchi Health";
 ---
 
-
 <BaseLayout pageTitle={pageTitle}>
-    <h1> We are making mental health support accessible for young people worldwide. </h1>
+    <section class="dummy-text">
+        <h2>The Nunchi Health Migration Project </h2>
+        <p> Started July 21st, 2026 </p>
+        <p>The pages that lie ahead—Our Mission, Our Team, Contact Us, Campus Chapters, Conference, 
+            Fellowship, Workshops, Refer A Student, Careers, Support Nunchi, Partner with Nunchi, 
+            Volunteer With Us—plus blog pages, store page. The priority is accessiblity, performance, 
+            responsiveness and becoming ad-grant compliant. </p>
+        <p>Astro.js, React.js, Cloudflare Pages & Workers + Stripe Checkout & Payload CMS </p>
+    </section>
 </BaseLayout>
+
+<style lang="scss">
+    .dummy-text {
+        background: #6D83E1;
+        color: white;
+        padding: 4vw;
+
+    }
+</style>
