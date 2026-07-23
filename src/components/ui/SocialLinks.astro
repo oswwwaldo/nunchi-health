@@ -1,0 +1,75 @@
+---
+// src/components/ui/SocialLinks.astro
+import AppIcon from '../ui/AppIcon.astro';
+
+interface Link {
+  icon: string;
+  url: string;
+  label: string;
+}
+
+interface Props {
+  links: Link[];
+}
+
+const { links } = Astro.props;
+---
+
+<nav class="social-links" aria-label="Social Media Links">
+  {links.map((link) => (
+    <a 
+      href={link.url} 
+      target="_blank" 
+      rel="noopener noreferrer" 
+      class="social-links__wrapper" 
+      aria-label={link.label}
+    >
+      <div class="social-links__icon">
+        <AppIcon name={link.icon} />
+      </div>
+    </a>
+  ))}
+</nav>
+
+<style lang="scss">
+    @use '../../styles/variables.scss' as *;
+
+    .social-links {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start; 
+        align-items: center;
+        gap: 16px; 
+        
+        &__wrapper {
+            display: inline-block;
+            position: relative;
+            cursor: pointer;
+            text-decoration: none;
+            overflow: hidden;
+            
+            width: 28px;
+            height: 28px;
+            
+            background-color: transparent;
+            border: none;
+            
+            transition: opacity 170ms ease-in-out, transform 170ms ease-in-out;
+            
+            &:hover {
+                opacity: 0.6; 
+                transform: scale(1.05); 
+            }
+        }
+
+        &__icon {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            color: #222222; 
+        }
+    }
+</style>

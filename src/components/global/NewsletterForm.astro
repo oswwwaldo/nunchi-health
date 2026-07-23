@@ -1,0 +1,47 @@
+---
+import Button from '../ui/Button.astro';
+---
+
+<div class="form-group">
+    <input type="email" placeholder="Email Address">
+    <Button textContent="Subscribe"/>
+</div>
+    
+<style lang="scss">
+    @use '../../styles/variables.scss' as *;
+
+    .form-group {
+        display: flex;
+        gap: 1rem;
+        width: 100%;
+    }
+
+    input {
+        background: white;
+        // border: 1px solid #E5E5E5;
+        border: none;
+        box-sizing: border-box;
+        padding: 1.5rem 2rem;
+
+        font-family: inherit;
+        font-size: inherit;
+        font-weight: 300;
+        line-height: 1.2rem;
+
+        min-width: 100px;
+        width: auto;
+
+        transition: background .3s ease-out,border .3s ease-out;
+
+
+        &::placeholder {
+            color: #c3c3c3;
+        }
+
+        &:focus {
+            outline: 2px solid black;
+            outline-offset: 4px;
+        }
+    }
+
+</style>

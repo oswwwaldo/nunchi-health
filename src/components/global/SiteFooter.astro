@@ -1,221 +1,303 @@
 ---
 import AppIcon from '../ui/AppIcon.astro';
+import { Image, getImage } from 'astro:assets';
+
+import rawBgImage from '../../assets/parallax-bg.webp';
+import nunchiHealthLogo from '../../assets/nunchi-logo.svg';
+import candid2026Badge from '../../assets/candid-2026-platinum-badge.png';
+import impact2025Badge from '../../assets/impact-2025-finalist-badge.png';
+
+import SearchBar from '../ui/SearchBar.astro';
+import SocialLinks from '../ui/SocialLinks.astro';
+import NewsletterForm from '../global/NewsletterForm.astro';
+
+// Reordered to match the image: Instagram, TikTok, YouTube, Email, LinkedIn
+const socialData = [
+  { icon: 'fa6-brands:instagram', url: 'https://www.instagram.com/nunchihealth/', label: 'Instagram' },
+  { icon: 'fa6-brands:tiktok', url: 'https://www.tiktok.com/@nunchihealth', label: 'TikTok' },
+  { icon: 'fa6-brands:youtube', url: 'https://www.youtube.com/@NunchiHealth', label: 'YouTube' },
+  { icon: 'fa6-solid:envelope', url: 'mailto:nunchihealth@gmail.com', label: 'Email' },
+  { icon: 'fa6-brands:linkedin', url: 'https://www.linkedin.com/company/nunchi-health/', label: 'LinkedIn' }
+];
+
+const optimizedBg = await getImage({ 
+  src: rawBgImage, 
+  format: 'webp',
+  width: 1920 
+});
 ---
 
-<footer class="footer">
-    <div class="footer__logo">
-        <img src="/logo.svg" alt="Nunchi Health Logo" />
+<div class="footer-wrapper">
+    <div class="parallax-container" aria-hidden="true">
+        <div class="parallax-bg" style={`background-image: url('${optimizedBg.src}');`}></div>
     </div>
     
-    <nav class="footer__nav">
-        <!-- Independent Block: list-group -->
-        <div class="list-group">
-            <!-- Independent Block: link-list -->
-            <div class="link-list">
-                <h4 class="link-list__header"> About Us </h4>
-                <ul class="link-list__list">
-                    <li class="link-list__item"> <a class="link-list__link" href="#">Our Mission</a> </li>
-                    <li class="link-list__item"> <a class="link-list__link" href="#">Our Team</a> </li>
-                    <li class="link-list__item"> <a class="link-list__link" href="#">Contact Us</a> </li>
-                </ul>
+    <footer class="footer">
+        <div class="footer__logo">
+            <a href="/" aria-label="Nunchi Health Homepage">
+                <Image 
+                    src={nunchiHealthLogo} 
+                    alt="Nunchi Health Logo" 
+                    loading="eager" 
+                    width={170.56}
+                    height={55.99}
+                />
+            </a>
+        </div>
+        
+        <div class="footer__information">
+            <nav class="footer__navigation" aria-label="Footer Navigation">
+                <div class="footer__links-group">
+                    <h4><strong>About Us</strong></h4>
+                    <p><a href="/our-mission">Our Mission</a></p>
+                    <p><a href="/our-team">Our Team</a></p>
+                    <p><a href="/contact">Contact Us</a></p>
+                </div>
+                <div class="footer__links-group">
+                    <h4><strong>Explore</strong></h4>
+                    <p><a href="/our-programs">Our Programs</a></p>
+                    <p><a href="/shop">Merch with a Mission</a></p>
+                    <p><a href="/support-nunchi">Donate</a></p>
+                </div>
+            </nav>
+
+            <div class="footer__search">
+                <SearchBar />
             </div>
             
-            <div class="link-list"> 
-                <h4 class="link-list__header"> Explore </h4>
-                <ul class="link-list__list">
-                    <li class="link-list__item"> <a class="link-list__link" href="#">Our Programs</a> </li>
-                    <li class="link-list__item"> <a class="link-list__link" href="#">Merch with a Mission</a> </li>
-                    <li class="link-list__item"> <a class="link-list__link" href="#">Donate</a> </li>
-                </ul>
+            <div class="footer__socials">
+                <SocialLinks links={socialData} />
+            </div>
+            
+            <div class="footer__description">
+                <p class="text-small">Nunchi Health is a 501(c)(3) nonprofit (EIN 93-4186101) making youth mental health free, accessible, and identity-affirming through community-led programs worldwide.</p>
+            </div>
+            
+            <div class="footer__copyright">
+                <p class="text-small">Copyright © 2026 Nunchi Health - All Rights Reserved.</p>
             </div>
         </div>
-
-        <!-- Independent Block: search-bar -->
-        <div class="search-bar">
-            <input class="search-bar__input" type="text" placeholder = "Search" aria-label="Search site">
-        </div>
         
-        <!-- Independent Block: socials -->
-        <div class="socials">
-            <button class="socials__btn" aria-label="LinkedIn">
-                <AppIcon name="fa6-brands:linkedin-in"></AppIcon>
-            </button>
-            <button class="socials__btn" aria-label="Instagram">
-                <AppIcon name="fa6-brands:instagram"></AppIcon>
-            </button>
-            <button class="socials__btn" aria-label="YouTube">
-                <AppIcon name="fa6-brands:youtube"></AppIcon>
-            </button>
-            <button class="socials__btn" aria-label="TikTok">
-                <AppIcon name="fa6-brands:tiktok"></AppIcon>
-            </button>
-            <button class="socials__btn" aria-label="Email">
-                <AppIcon name="fa6-solid:envelope"></AppIcon>
-            </button>
+        <div class="footer__form">
+            <div class="footer__form-text">
+                <h2>You belong here!</h2>
+                <p class="text-small">Join the Nunchi Health mailing list to stay connected with our community, get updates on programs and events, and discover ways to support mental health and advocacy.</p>
+            </div>
+            
+            <NewsletterForm />
+            
+            <div class="footer__badges">
+                <div class="footer__badge-img">
+                    <Image 
+                        src={candid2026Badge} 
+                        alt="Candid 2026 Platinum Transparency Badge" 
+                        loading="lazy" 
+                        width={106}
+                        height={106}
+                    />
+                </div>
+                <div class="footer__badge-img">
+                    <Image 
+                        src={impact2025Badge} 
+                        alt="Impact 2025 Finalist Badge" 
+                        loading="lazy" 
+                        width={106}
+                        height={126}
+                    />
+                </div>
+            </div>
         </div>
-        
-        <p class="footer__description"> 
-            Nunchi Health is a 501(c)(3) nonprofit (EIN 93-4186101) making youth mental health free, accessible, and identity-affirming through community-led programs worldwide.
-        </p> 
-        <p class="footer__copyright"> Copyright © 2026 Nunchi Health - All Rights Reserved. </p>
-    </nav>
-    
-    <div class="footer__subscribe">
-        <h2 class="footer__heading"> You belong here </h2>
-        <p class="footer__text"> 
-            Join the Nunchi Health mailing list to stay connected with our community, get updates on programs and events, and discover ways to support mental health and advocacy.
-        </p>
-        
-        <!-- Independent Block: mailing-list -->
-        <div class="mailing-list">
-            <input class="mailing-list__input" type="email" aria-label="Email address">
-            <button class="mailing-list__button"> Subscribe </button>
-        </div>
-
-        <div class="certificate-blurb">
-            <img class="footer__certificate-img" src="" alt="Certificate Badge" />
-        </div>
-    </div>    
-</footer>
+    </footer>
+</div>
 
 <style lang="scss">
     @use '../../styles/variables.scss' as *;
 
-    /* =========================================
-       Block: Footer
-       ========================================= */
-    .footer {
-        display:     grid;
-        height: 80vh;
-        background-color: $color--tan;
+    .footer-wrapper {
+        position: relative;
+        overflow: hidden;
+        z-index: 0;
+        background-color: rgba($color--tan, 0.95);
 
-
-        grid-auto-flow: column;
-        align-content: start;
+        display: flex;
         justify-content: center;
-        align-items: start;
+    }
 
-        > * {
-            height: 100%;
+    .parallax-container {
+        position: absolute;
+        inset: 0;
+        z-index: -1; 
+        overflow: hidden;
+    }
+
+    .parallax-bg {
+        position: absolute;
+        // top: -30%; 
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 160%; 
+        
+        background-size: cover;
+        background-position: center;
+        will-change: transform; 
+    }
+
+    .footer {
+        position: relative;
+        z-index: 10;
+        
+        display: grid;
+        grid-template-columns: repeat(3, 0.5fr); 
+        gap: 4vw; 
+        
+        padding: 5rem 6vw;
+        max-width: 1500px; 
+        margin: 0 auto;
+
+        @media (max-width: 900px) {
+            grid-template-columns: 1fr;
+            gap: 4rem;
+            padding: 3rem 5vw;
         }
 
         &__logo {
-            img {
-                // Logo styles
+            padding-top: 1rem; 
+            
+            a {
+                display: inline-block;
+                &:focus-visible {
+                    outline: 2px solid #aaa;
+                    outline-offset: 4px;
+                }
+            }
+
+            @media (max-width: 900px) {
+                padding-top: 0;
             }
         }
 
-        &__nav {
+        &__information {
             display: flex;
             flex-direction: column;
-            // Navigation section styles
+            justify-content: flex-start;
+            gap: 1.5rem; 
+            width: 100%; 
+        }
+
+        &__form {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            width: 100%;
+        }
+
+        &__navigation {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between; 
+            gap: 4rem; 
+            flex-wrap: wrap; 
+        }
+
+        &__links-group {
+            h4 {
+                margin-bottom: 1.2rem;
+                font-weight: 600;
+            }
+            p {
+                margin-bottom: 0.5rem;
+            }
+            a {
+                text-decoration: underline;
+                text-underline-offset: 4px;
+                transition: opacity 0.2s ease;
+                
+                &:hover {
+                    opacity: 0.7;
+                }
+                &:focus-visible {
+                    outline: 2px solid #aaa;
+                    outline-offset: 2px;
+                }
+            }
+        }
+
+        &__search {
+            width: 100%;
+            margin-top: 0.5rem;
+        }
+        
+        &__socials {
+            width: 100%;
+            margin-top: -0.5rem; 
         }
 
         &__description {
-            // Paragraph styles
+            /* Now using global .text-small utility class defined in layout */
         }
 
         &__copyright {
-            // Copyright text styles
+            margin-top: 1rem; 
+            opacity: 0.8;
         }
 
-        &__subscribe {
+        &__form-text {
             display: flex;
             flex-direction: column;
-        }
-        
-        &__heading {
-            // 'You belong here' header
-        }
-        
-        &__text {
-            // Subscription text styles
-        }
-        
-        &__certificate {
-            // Certificate blurb layout
-        }
-    }
-
-    /* =========================================
-       Block: List Group
-       ========================================= */
-    .list-group {
-        display: flex;
-        justify-content: space-between;
-    }
-
-    /* =========================================
-       Block: Link List
-       ========================================= */
-    .link-list {
-        &__header {
-            font-size: 19.0653px;  
-            font-weight: 600;
-            margin: 0 0 32px 0;
+            gap: 1rem;
+            
+            h2 {
+                margin: 0;
+            }
         }
 
-        &__list {
-            list-style: none;
-            padding: 0;
-            margin: 16px 0 0;
-
+        &__badges {
             display: flex;
-            flex-direction: column;
-            gap: 16px;
+            flex-direction: row;
+            align-items: center;
+            gap: 1.5rem;
+            margin-top: 1rem;
         }
 
-        &__item {
-            color: $color--black;
-            text-decoration: underline;
+        &__badge-img {
+            flex-shrink: 0;
+            img {
+                width: auto;
+                max-width: 100%;
+            }
         }
 
-        &__link {
-            text-decoration: none;
-            // a styles (color, hover states, etc.)
-        }
-    }
-
-    /* =========================================
-       Block: Search Bar
-       ========================================= */
-    .search-bar {
-        &__input {
-            display: block;
-            box-sizing: border-box;
-            width: 100%;
-            min-height: 20px;
-            padding: 12px 12px 12px 45px;
-            border: 1px solid $color--gray;
-
-            opacity: 0.7;
-            background: no-repeat 15px 50%;
-            // background-image: 
-
+        h4 {
+            strong {
+                font-weight: 700 !important;
+            }
         }
     }
+</style>
 
-    /* =========================================
-       Block: Socials
-       ========================================= */
-    .socials {
-        &__btn {
-            // button styles (background, border, padding)
-            background: none;
-            border: none;
-        }
+<script>
+  const wrapper = document.querySelector('.footer-wrapper') as HTMLElement;
+  const parallaxBg = document.querySelector('.parallax-bg') as HTMLElement;
+
+  function updateParallax() {
+    if (!wrapper || !parallaxBg) return;
+
+    const rect = wrapper.getBoundingClientRect();
+    const viewportHeight = window.innerHeight;
+
+    if (rect.top < viewportHeight && rect.bottom > 0) {
+      const distanceScrolledIntoView = viewportHeight - rect.top;
+      const yOffset = distanceScrolledIntoView * -0.3;
+      
+      parallaxBg.style.transform = `translate3d(0, ${yOffset}px, 0)`;
     }
+  }
 
-    /* =========================================
-       Block: Mailing List
-       ========================================= */
-    .mailing-list {
-        &__input {
-            // email input styles
-        }
-
-        &__button {
-            // submit button styles
-        }
-    }
-</style>    
+  const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+  
+  if (!mediaQuery.matches) {
+      window.addEventListener('scroll', updateParallax, { passive: true });
+      updateParallax(); 
+  }
+</script>
