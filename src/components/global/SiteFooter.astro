@@ -70,18 +70,18 @@ const optimizedBg = await getImage({
             </div>
             
             <div class="footer__description">
-                <p class="text-small">Nunchi Health is a 501(c)(3) nonprofit (EIN 93-4186101) making youth mental health free, accessible, and identity-affirming through community-led programs worldwide.</p>
+                <p class="text-base">Nunchi Health is a 501(c)(3) nonprofit (EIN 93-4186101) making youth mental health free, accessible, and identity-affirming through community-led programs worldwide.</p>
             </div>
             
             <div class="footer__copyright">
-                <p class="text-small">Copyright © 2026 Nunchi Health - All Rights Reserved.</p>
+                <p class="text-base">Copyright © 2026 Nunchi Health - All Rights Reserved.</p>
             </div>
         </div>
         
         <div class="footer__form">
             <div class="footer__form-text">
-                <h2>You belong here!</h2>
-                <p class="text-small">Join the Nunchi Health mailing list to stay connected with our community, get updates on programs and events, and discover ways to support mental health and advocacy.</p>
+                <h3>You belong here!</h3>
+                <p class="text-base">Join the Nunchi Health mailing list to stay connected with our community, get updates on programs and events, and discover ways to support mental health and advocacy.</p>
             </div>
             
             <NewsletterForm />
@@ -148,10 +148,11 @@ const optimizedBg = await getImage({
         z-index: 10;
         
         display: grid;
-        grid-template-columns: repeat(3, 0.5fr); 
+        // grid-template-columns: repeat(3, 0.5fr); 
+        grid-template-columns: 200px 1fr 1fr;
         gap: 4vw; 
         
-        padding: 5rem 6vw;
+        padding: 5rem 8vw;
         max-width: 1500px; 
         margin: 0 auto;
 
@@ -195,7 +196,7 @@ const optimizedBg = await getImage({
         &__navigation {
             display: flex;
             flex-direction: row;
-            justify-content: space-between; 
+            justify-content: flex-start; 
             gap: 4rem; 
             flex-wrap: wrap; 
         }
@@ -230,11 +231,11 @@ const optimizedBg = await getImage({
         
         &__socials {
             width: 100%;
-            margin-top: -0.5rem; 
+            // margin-top: -0.5rem; 
+            margin-bottom: 2rem;
         }
 
         &__description {
-            /* Now using global .text-small utility class defined in layout */
         }
 
         &__copyright {
@@ -288,7 +289,7 @@ const optimizedBg = await getImage({
 
     if (rect.top < viewportHeight && rect.bottom > 0) {
       const distanceScrolledIntoView = viewportHeight - rect.top;
-      const yOffset = distanceScrolledIntoView * -0.3;
+      const yOffset = distanceScrolledIntoView * -0.5;
       
       parallaxBg.style.transform = `translate3d(0, ${yOffset}px, 0)`;
     }
